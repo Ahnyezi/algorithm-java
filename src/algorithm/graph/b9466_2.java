@@ -1,21 +1,17 @@
 package algorithm.graph;
+// 텀프로젝트 dfs
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// 텀프로젝트 dfs
 public class b9466_2 {
     static int total, N;
     static int[] students;
-    static boolean[] visited, added;
+    static boolean[] visited, checked;
 
     public static void main(String[] args) throws IOException {
-        solution();
-    }
-
-    static void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int T = Integer.parseInt(br.readLine());
@@ -25,7 +21,7 @@ public class b9466_2 {
             N = Integer.parseInt(br.readLine());
             students = new int[N];
             visited = new boolean[N];
-            added = new boolean[N];
+            checked = new boolean[N];
 
             StringTokenizer st = new StringTokenizer(br.readLine());
             for (int i = 0; i < N; i++) {
@@ -51,13 +47,13 @@ public class b9466_2 {
         if (!visited[next]) {
             dfs(next);
         }
-        if (!added[next]) {
-            for (int s = next; s != start ; s = students[s]) {
+        if (!checked[next]) {
+            for (int s = next; s != start; s = students[s]) {
                 total++;
             }
             total++;
         }
 
-        added[start] = true;
+        checked[start] = true;
     }
 }

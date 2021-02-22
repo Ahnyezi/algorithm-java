@@ -11,10 +11,6 @@ import java.util.StringTokenizer;
 public class b9466 {
 
     public static void main(String[] args) throws IOException {
-        solution1();
-    }
-
-    static void solution1() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int T = Integer.parseInt(br.readLine());
