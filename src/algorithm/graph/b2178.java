@@ -60,6 +60,4 @@ public class b2178 {
             return false;
         return true;
     }
-
-
 }

@@ -35,7 +35,7 @@ public class b1991 {
             if (root.data == data) { // 자리 발견
                 if (left != '.') root.left = new Node(left);
                 if (right != '.') root.right = new Node(right);
-            } else { // 자리 발견 x
+            } else {
                 search(root.left, data, left, right);
                 search(root.right, data, left, right);
             }

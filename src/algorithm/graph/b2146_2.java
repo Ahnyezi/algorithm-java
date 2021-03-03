@@ -49,11 +49,11 @@ public class b2146_2 {
                 int nx = curr[0] + dx[i];
                 int ny = curr[1] + dy[i];
                 // 바다일 때
-                if (isRange(nx, ny) && map[nx][ny] == SEA) {
-                    map[nx][ny] = map[curr[0]][curr[1]];
-                    visited[nx][ny] = visited[curr[0]][curr[1]] + 1;
-                    queue.add(new int[]{nx, ny});
-                }
+            if (isRange(nx, ny) && map[nx][ny] == SEA) {
+                map[nx][ny] = map[curr[0]][curr[1]];
+                visited[nx][ny] = visited[curr[0]][curr[1]] + 1;
+                queue.add(new int[]{nx, ny});
+            }
                 // 다른 섬일 때
                 else if (isRange(nx, ny) && map[nx][ny] != map[curr[0]][curr[1]]) {
                     shortest = Math.min(shortest, visited[nx][ny] + visited[curr[0]][curr[1]]);

@@ -41,18 +41,18 @@ public class b2146 {
     static int getShortest() {
         int shortest = Integer.MAX_VALUE;
 
-        int[][] visited = new int[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                visited[i][j] = Integer.MAX_VALUE;
-            }
-        }
+int[][] visited = new int[N][N];
+for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+        visited[i][j] = Integer.MAX_VALUE;
+    }
+}
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (map[i][j] == SEA) continue;
 
-                int GROUPNUM = map[i][j];
+                int GROUPNUM = map[i][j]; // 현재 섬의 번호
                 Queue<int[]> queue = new LinkedList<>();
                 queue.add(new int[]{i, j});
                 visited[i][j] = 0;
@@ -66,19 +66,19 @@ public class b2146 {
 
                         // 섬
                         if (isRange(nx, ny) && map[nx][ny] != SEA) {
-                            // 같은 섬
+                            // 같은 섬이고, 아직 방문 안했으면
                             if (map[nx][ny] == GROUPNUM && visited[nx][ny] != 0) {
                                 visited[nx][ny] = 0;
                                 queue.add(new int[]{nx, ny});
                             }
-                            // 다른 섬
+                            // 다른 섬이면서 현재경로가 최단경로보다 짧으면
                             if (map[nx][ny] != GROUPNUM
                                     && visited[nx][ny] > visited[point[0]][point[1]]) {
                                 shortest = Math.min(shortest, visited[point[0]][point[1]]);
                             }
                         }
 
-                        // 바다
+                        // 바다면서 현재경로가 최단경로보다 짧으면
                         if (isRange(nx, ny) && map[nx][ny] == SEA
                                 && visited[nx][ny] > visited[point[0]][point[1]] + 1) {
                             visited[nx][ny] = visited[point[0]][point[1]] + 1;
