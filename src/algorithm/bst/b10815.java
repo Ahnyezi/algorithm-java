@@ -48,7 +48,7 @@ public class b10815 {
         System.out.println(sb);
     }
 
-    // 이진 탐색(boolean배열이 가능한 범위를 넘어선다면?)
+    // 이진 탐색
     // - 주어진 카드를 정렬해서 놓는다.
     static int[] cards;
     static void solution2() throws IOException {
@@ -65,7 +65,7 @@ public class b10815 {
         }
         Arrays.sort(cards);
 
-        //
+        // 비교
         int M = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
 
