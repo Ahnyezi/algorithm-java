@@ -62,8 +62,4 @@ public class b1780 {
             }
         }
     }
-
-    // nx, ny로 나눌 필요없음. 정사각형이기 때문에 new length로 놔도 된다.
-
-
 }
