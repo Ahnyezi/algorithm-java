@@ -40,10 +40,8 @@ public class b2447 {
 
         int nn = n / 3;
 
-        int cnt = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                cnt++;
                 if (i == 1 && j == 1){
                     recursion(x + i * nn, y + j * nn, nn, true);                }
                 else{
