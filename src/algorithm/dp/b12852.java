@@ -18,6 +18,7 @@ import java.util.HashMap;
 
 public class b12852 {
 
+    // map을 사용해서 이전 시행 인덱스의 list값들을 현재 시행 인덱스에 add해주고 나의 인덱스로 add
     static void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
@@ -73,45 +74,43 @@ public class b12852 {
         System.out.println(sb);
     }
 
-
+    // 다이나믹 프로그래밍 + DFS
     static StringBuilder sb;
-    static int[] pre;
     static void solution2() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         sb = new StringBuilder();
 
         int N = Integer.parseInt(br.readLine());
-        int[] dp = new int[N + 1];
-        pre = new int[N + 1];
+        int[] dp = new int[N + 1]; // 0:0, 1:1, 2:1, 3:1
+        int[] prev = new int[N + 1];
 
         for (int i = 2; i <= N; i++) {
             if (i < 4) {
-                dp[i] = pre[i] = 1;
+                prev[i] = dp[i] = 1;
                 continue;
             }
-
             dp[i] = dp[i - 1] + 1;
-            pre[i] = i - 1;
-
-            if (i % 2 == 0 && dp[i / 2] + 1 < dp[i]) {
-                dp[i] = dp[i / 2] + 1;
-                pre[i] = i / 2;
-            }
+            prev[i] = i - 1;
             if (i % 3 == 0 && dp[i / 3] + 1 < dp[i]) {
                 dp[i] = dp[i / 3] + 1;
-                pre[i] = i / 3;
+                prev[i] = i / 3;
+            }
+            if (i % 2 == 0 && dp[i / 2] + 1 < dp[i]) {
+                dp[i] = dp[i / 2] + 1;
+                prev[i] = i / 2;
             }
         }
 
         sb.append(dp[N]).append('\n');
-        dfs(N);
+        dfs(N, prev);
         System.out.println(sb);
     }
 
-    static void dfs(int i){
-        if (i == 0) return;
-        sb.append(i).append(' ');
-        dfs(pre[i]);
+    static void dfs(int n, int[] prev) {
+        if (n == 0)
+            return;
+        sb.append(n).append(' ');
+        dfs(prev[n], prev);
     }
 
     public static void main(String[] args) throws IOException {
